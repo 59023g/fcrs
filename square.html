@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title></title>
+    <meta content="| / | / | X | \ | \ |" name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+
+    <style>
+    *, *:after, *:before {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box
+    }
+    html {
+        height: 100%;
+    }
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #0000ff;
+    }
+    .square {
+        position: fixed;
+        display: block;
+        border: 4px solid rgba(255, 255, 255, .5);
+    }
+    .container {
+        min-height: 100%;
+        margin: 0 auto;
+        display:block;
+        background-color: rgba(255, 255, 255, .5);
+    }
+    </style>
+
+    <script>
+    window.onload = fixedSquare;
+    window.onresize = fixedSquare;
+
+    var wH, wW, sH, sW, t, l, cW
+
+        function fixedSquare() {
+
+            wH = window.innerHeight //get height of window
+            wW = window.innerWidth //get width of window 
+            console.log(wW)
+            sH = wH * (3 / 4); sW = sH // height of Square equal to 75% of window height; set Square width = Square height
+            t = wH/ 8 //  top (like margin, but for fixed divs) equal to 1/8 window height
+            l = ((wW - sW)) / 2 // left equals window width minus square width, divided by 2
+            cW = sH * ((2 / 3)) // container width is set to be 2/3s width of square 
+
+            s = document.querySelector('.square') //get elements and put into variable 
+            c = document.querySelector('.container')             
+            c.setAttribute("style", "width:" + cW + "px") // set inline attributes of respective elements 
+            s.setAttribute("style", 'height:' + sH + "px;" + "width:" + sW + "px;" + "top:" + t + "px;" + "left:" + l + "px")
+
+
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="container"></div>
+
+    <div class="square"></div>
+
+
+
+</body>
+
+</html>
